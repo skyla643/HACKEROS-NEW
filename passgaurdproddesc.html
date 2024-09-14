@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassGuard - Products</title>
+    <style>
+        /* New Hacker OS Theme */
+        body {
+            background-color: #0f1014; /* Dark background for hacker vibe */
+            color: #39ff14; /* Neon green text */
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1e1e1e; /* Slight contrast for header */
+            color: #39ff14;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #39ff14; /* Neon green border */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background-color: #1e1e1e; /* Matching nav background */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #39ff14;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000; /* Red hover effect */
+        }
+
+        .product {
+            border: 2px solid #39ff14; /* Neon green border */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #1a1a1a; /* Slight contrast to background */
+        }
+
+        .product h2 {
+            color: #39ff14;
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        .product p {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .code-container {
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .code-container pre {
+            white-space: pre-wrap;
+            color: #00ffff; /* Cyan for code visibility */
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #39ff14;
+            color: #000000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .copy-button:hover {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            color: #39ff14;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #39ff14;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .product h2 {
+                font-size: 1.7rem;
+            }
+
+            .copy-button {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .product h2 {
+                font-size: 1.5rem;
+            }
+
+            .copy-button {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PassGuard</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="product">
+        <h2>PassGuard Password Leak Checker Tool</h2>
+        <div class="code-container">
+            <pre><code id="secure-chat-code">
+import hashlib
+import requests
+
+# Function to check if a password has been leaked
+def check_password_leak(password):
+    # Hash the password using SHA-1
+    sha1_password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
+
+    # The first 5 characters of the hash (for k-anonymity)
+    prefix = sha1_password[:5]
+
+    # The rest of the hash
+    suffix = sha1_password[5:]
+
+    # Query the Have I Been Pwned API with the first 5 characters
+    url = f'https://api.pwnedpasswords.com/range/{prefix}'
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Check if the suffix is in the response
+        hashes = (line.split(':') for line in response.text.splitlines())
+        for h, count in hashes:
+            if h == suffix:
+                return True, count
+        return False, 0
+    else:
+        raise Exception(f"Failed to connect to API: {response.status_code}")
+
+# Example usage
+if __name__ == "__main__":
+    passwords = ["password1", "password2", "password3"]
+    results = check_multiple_passwords(passwords)
+    for password, (leaked, count) in results.items():
+        if leaked:
+            print(f"Password '{password}' has been leaked {count} times.")
+        else:
+            print(f"Password '{password}' is safe (not found in known breaches).")
+            </code></pre>
+            <button class="copy-button" onclick="copyCode('secure-chat-code')">Copy</button>
+        </div>
+
+        <div class="announcement">
+            <h2>PassGuard Leak Checker Tool</h2>
+            <p>This Python script helps users check if their passwords have been compromised in known data breaches using the <strong>Have I Been Pwned</strong> (HIBP) API.</p>
+
+            <h3>How to Use:</h3>
+            <p>The <code>check_password_leak</code> function takes a single argument:</p>
+            <ul>
+                <li><strong>Password:</strong> The plaintext password you want to check.</li>
+            </ul>
+
+            <p>Steps to use the tool:</p>
+            <ol>
+                <li><strong>Install Python 3:</strong> Ensure you have Python 3 installed and install the <code>requests</code> library:</li>
+                <pre><code>pip install requests</code></pre>
+                <li><strong>Create a List of Passwords:</strong> Prepare the passwords you want to check.</li>
+                <li><strong>Run the Script:</strong> Copy the script, replace the placeholder passwords, and run the code.</li>
+                <li><strong>View Results:</strong> The script tells you if a password has been found in breaches, and how many times.</li>
+            </ol>
+
+            <h3>Warnings:</h3>
+            <ul>
+                <li>Handle passwords securely and avoid reusing them across multiple sites.</li>
+                <li>Use a password manager to create strong, unique passwords.</li>
+            </ul>
+
+            <p>Regularly check your passwords with PassGuard to stay ahead of breaches and protect your accounts.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hacker OS System Emrald Co. Unauthorized use prohibited.</p>
+        <p>Disclaimer: The Hacker OS System is intended for use only in extreme circumstances where traditional methods fail against ruthless adversaries. Its use should be a measure of last resort, and legal implications may apply.</p>
+    </footer>
+
+    <script>
+        function copyCode(id) {
+            var codeElement = document.getElementById(id);
+            var range = document.createRange();
+            range.selectNode(codeElement);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            alert("Code copied!");
+        }
+    </script>
+</body>
+</html>

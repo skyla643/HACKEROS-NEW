@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CipherSafe - Products</title>
+    <style>
+        /* New Hacker OS Theme */
+        body {
+            background-color: #0f1014; /* Dark background for hacker vibe */
+            color: #39ff14; /* Neon green text */
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1e1e1e; /* Slight contrast for header */
+            color: #39ff14;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #39ff14; /* Neon green border */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background-color: #1e1e1e; /* Matching nav background */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #39ff14;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000; /* Red hover effect */
+        }
+
+        .product {
+            border: 2px solid #39ff14; /* Neon green border */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #1a1a1a; /* Slight contrast to background */
+        }
+
+        .product h2 {
+            color: #39ff14;
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        .product p {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .code-container {
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .code-container pre {
+            white-space: pre-wrap;
+            color: #00ffff; /* Cyan for code visibility */
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #39ff14;
+            color: #000000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .copy-button:hover {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            color: #39ff14;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #39ff14;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .product h2 {
+                font-size: 1.7rem;
+            }
+
+            .copy-button {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .product h2 {
+                font-size: 1.5rem;
+            }
+
+            .copy-button {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CipherSafe</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="product">
+        <h2>CipherSafe: Encrypt & Decrypt Your Messages</h2>
+
+        <div class="code-container">
+            <pre><code id="secure-chat-code-1">
+    from email.mime.application import MIMEApplication
+    import os
+    import sys
+    from cryptography.fernet import Fernet
+    import smtplib
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart 
+
+    # Check if required modules are installed
+    required_modules = ['cryptography', 'smtplib', 'email']
+    for module in required_modules:
+        if module not in sys.modules:
+            print(f"Module '{module}' is not installed. Please run 'pip install {module}' to install it.")
+            sys.exit(1)
+
+    def generate_key(key_file):
+        """Generate a new encryption key and save it to a file."""
+        key = Fernet.generate_key()
+        with open(key_file, "wb") as key_file:
+            key_file.write(key)
+        return key
+
+    def load_key(key_file):
+        """Load an encryption key from a file."""
+        try:
+            with open(key_file, "rb") as key_file:
+                return key_file.read()
+        except FileNotFoundError:
+            print(f"Encryption key file '{key_file}' not found.")
+            return None
+
+    def encrypt_message(message, key):
+        """Encrypt a message using the provided key."""
+        try:
+            fernet = Fernet(key)
+            return fernet.encrypt(message.encode())
+        except Exception as e:
+            print(f"Failed to encrypt message: {e}")
+            return None
+
+    def decrypt_message(encrypted_message, key):
+        """Decrypt an encrypted message using the provided key."""
+        try:
+            fernet = Fernet(key)
+            return fernet.decrypt(encrypted_message).decode()
+        except Exception as e:
+            print(f"Failed to decrypt message: {e}")
+            return None
+
+    def send_email(recipient_email, encrypted_message):
+        try:
+            # Set email credentials
+            sender_email = "your_email@gmail.com"  # Replace with your email
+            app_password = "your_app_password"     # Replace with your app password
+
+            # Set up the server
+            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            server.login(sender_email, app_password)
+
+            # Create the email
+            msg = MIMEMultipart()
+            msg['Subject'] = 'CipherSafe Encrypted Message'
+            msg['From'] = sender_email
+            msg['To'] = recipient_email
+
+            # Add a text part to the message
+            text_part = MIMEText("Encrypted message attached.")
+            msg.attach(text_part)
+
+            # Attach the encrypted message as a file
+            attachment = MIMEApplication(encrypted_message)
+            attachment['Content-Disposition'] = 'attachment; filename="encrypted_message.txt"'
+            msg.attach(attachment)
+
+            # Send the email
+            server.sendmail(sender_email, recipient_email, msg.as_string())
+            server.quit()
+            print("Email sent successfully!")
+        except Exception as e:
+            print(f"Failed to send email: {e}")
+
+    def save_encrypted_message(encrypted_message, filename="encrypted_message.txt"):
+        """Save an encrypted message to a file."""
+        try:
+            with open(filename, "wb") as encrypted_file:
+                encrypted_file.write(encrypted_message)
+            print(f"Encrypted message saved to '{filename}'.")
+        except Exception as e:
+            print(f"Failed to save encrypted message: {e}")
+
+    def load_encrypted_message(filename="encrypted_message.txt"):
+        """Load an encrypted message from a file."""
+        try:
+            with open(filename, "rb") as encrypted_file:
+                return encrypted_file.read()
+        except FileNotFoundError:
+            print(f"Encrypted message file '{filename}' not found.")
+            return None
+
+    def main():
+        key_file = "encryption_key.txt"
+        if not os.path.exists(key_file):
+            key = generate_key(key_file)
+        else:
+            key = load_key(key_file)
+
+        if not key:
+            print("Failed to load or generate key.")
+            return
+
+        recipient_email = input("Enter recipient email: ")
+        message = input("Enter your message: ")
+
+        encrypted_message = encrypt_message(message, key)
+
+        if not encrypted_message:
+            print("Failed to encrypt message.")
+            return
+
+        save_encrypted_message(encrypted_message)
+
+        send_email(recipient_email, encrypted_message)
+
+        # Optionally, decrypt the message to verify
+        loaded_encrypted_message = load_encrypted_message()
+        if loaded_encrypted_message:
+            decrypted_message = decrypt_message(loaded_encrypted_message, key)
+            if decrypted_message:
+                print("Decrypted message to verify: ", decrypted_message)
+
+    if __name__ == "__main__":
+        main()
+            </code></pre>
+            <button class="copy-button" onclick="copyCode('secure-chat-code-1')">Copy</button>
+        </div>
+
+        <div class="code-container">
+            <pre><code id="secure-chat-code-2">
+    from cryptography.fernet import Fernet
+
+    # Your encrypted message
+    encrypted_message = b"..."  # Replace with your encrypted message
+
+    # Your key (it should be the same key that was used to encrypt the message)
+    key = b"..."  # Replace with your key from 'encryption_key.txt'
+
+    # Initialize the Fernet class
+    cipher_suite = Fernet(key)
+
+    # Decrypt the message
+    decrypted_message = cipher_suite.decrypt(encrypted_message)
+
+    print(decrypted_message.decode())
+            </code></pre>
+            <button class="copy-button" onclick="copyCode('secure-chat-code-2')">Copy</button>
+        </div>
+
+        <div class="announcement">
+            <h2>CipherSafe: Encrypt & Decrypt Your Messages</h2>
+            <p>CipherSafe is a Python script designed to encrypt and decrypt messages securely. Below are the instructions for using CipherSafe:</p>
+
+            <h3>How to Use:</h3>
+            <ol>
+                <li><strong>Install Required Modules:</strong>
+                    <pre><code>pip install cryptography smtplib email</code></pre>
+                </li>
+                <li><strong>Prepare the Python Script:</strong>
+                    <ul>
+                        <li>Save the provided code into a Python script file, e.g., <code>cipher_safe.py</code>.</li>
+                    </ul>
+                </li>
+                <li><strong>Set Up Email Credentials:</strong>
+                    <ul>
+                        <li>Replace <code>sender_email</code> and <code>app_password</code> with your actual email and app password in the <code>send_email</code> function.</li>
+                        <li>Ensure you have enabled App Passwords for your email account if using Gmail.</li>
+                    </ul>
+                </li>
+                <li><strong>Run the Script:</strong>
+                    <ul>
+                        <li>Execute the script in your terminal or command prompt:</li>
+                        <pre><code>python cipher_safe.py</code></pre>
+                        <li>Follow the prompts to enter the recipient's email and your message.</li>
+                    </ul>
+                </li>
+                <li><strong>Decrypting the Message:</strong>
+                    <ul>
+                        <li>Use the second script provided to decrypt the message.</li>
+                        <li>Replace the placeholders with the actual encrypted message and key.</li>
+                        <li>Run the decryption script:</li>
+                        <pre><code>python decrypt_message.py</code></pre>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Important Notes:</h3>
+            <ul>
+                <li>Ensure that the recipient has the key to decrypt the message securely.</li>
+                <li>Handle encryption keys and encrypted messages responsibly to maintain security.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hacker OS System Emrald Co. Unauthorized use prohibited.</p>
+        <p>Disclaimer: The Hacker OS System is intended for use only in extreme circumstances where traditional methods fail against ruthless adversaries. Its use should be a measure of last resort, and legal implications may apply.</p>
+    </footer>
+
+    <script>
+        function copyCode(id) {
+            var codeElement = document.getElementById(id);
+            var range = document.createRange();
+            range.selectNode(codeElement);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            alert("Code copied!");
+        }
+    </script>
+</body>
+</html>
