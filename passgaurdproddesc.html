@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassGuard - Products</title>
     <style>
-        /* New Hacker OS Theme */
+        /* General Styling */
         body {
-            background-color: #0f1014; /* Dark background for hacker vibe */
+            background-color: #0f1014; /* Dark background */
             color: #39ff14; /* Neon green text */
             font-family: 'Courier New', monospace;
             margin: 0;
@@ -15,11 +15,11 @@
         }
 
         header {
-            background-color: #1e1e1e; /* Slight contrast for header */
+            background-color: #1e1e1e;
             color: #39ff14;
             padding: 20px 0;
             text-align: center;
-            border-bottom: 3px solid #39ff14; /* Neon green border */
+            border-bottom: 3px solid #39ff14;
         }
 
         h1 {
@@ -29,16 +29,12 @@
             letter-spacing: 2px;
         }
 
-        nav {
-            background-color: #1e1e1e; /* Matching nav background */
-            padding: 10px 0;
-            text-align: center;
-        }
-
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            text-align: center;
+            background-color: #1e1e1e;
         }
 
         nav ul li {
@@ -53,21 +49,23 @@
         }
 
         nav ul li a:hover {
-            color: #ff0000; /* Red hover effect */
+            color: #ff0000;
         }
 
+        /* Layout for content cards */
         .product {
-            border: 2px solid #39ff14; /* Neon green border */
-            border-radius: 8px;
+            max-width: 1200px;
+            margin: 40px auto;
             padding: 20px;
-            margin: 20px;
-            background-color: #1a1a1a; /* Slight contrast to background */
+            background-color: #151515;
+            border: 2px solid #39ff14;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .product h2 {
             color: #39ff14;
             font-size: 2rem;
-            margin-top: 0;
         }
 
         .product p {
@@ -79,13 +77,20 @@
             background-color: #111111;
             padding: 20px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             position: relative;
+            display: none; /* Initially hidden */
+        }
+
+        .code-container.active {
+            display: block;
         }
 
         .code-container pre {
             white-space: pre-wrap;
-            color: #00ffff; /* Cyan for code visibility */
+            color: #00ffff; /* Cyan for code */
+            margin: 0;
         }
 
         .copy-button {
@@ -104,6 +109,22 @@
         .copy-button:hover {
             background-color: #ff0000;
             color: #ffffff;
+        }
+
+        .toggle-button {
+            background-color: #39ff14;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: #00ffff;
         }
 
         footer {
@@ -131,6 +152,10 @@
             .copy-button {
                 font-size: 12px;
             }
+
+            .toggle-button {
+                font-size: 14px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -144,6 +169,10 @@
 
             .copy-button {
                 font-size: 10px;
+            }
+
+            .toggle-button {
+                font-size: 12px;
             }
         }
     </style>
@@ -159,10 +188,11 @@
         </ul>
     </nav>
 
-
     <div class="product">
         <h2>PassGuard Password Leak Checker Tool</h2>
-        <div class="code-container">
+
+        <button class="toggle-button" onclick="toggleCode('code1')">Show/Hide Code Example</button>
+        <div id="code1" class="code-container">
             <pre><code id="secure-chat-code">
 import hashlib
 import requests
@@ -206,41 +236,33 @@ if __name__ == "__main__":
             <button class="copy-button" onclick="copyCode('secure-chat-code')">Copy</button>
         </div>
 
-        <div class="announcement">
-            <h2>PassGuard Leak Checker Tool</h2>
-            <p>This Python script helps users check if their passwords have been compromised in known data breaches using the <strong>Have I Been Pwned</strong> (HIBP) API.</p>
+        <h3>Instructions:</h3>
+        <ul>
+            <li><strong>Install Required Modules:</strong> <code>pip install requests</code></li>
+            <li><strong>Save the Code:</strong> Save the provided code in a Python file.</li>
+            <li><strong>Run the Script:</strong> Replace the placeholder passwords and run the script to check for leaks.</li>
+        </ul>
 
-            <h3>How to Use:</h3>
-            <p>The <code>check_password_leak</code> function takes a single argument:</p>
-            <ul>
-                <li><strong>Password:</strong> The plaintext password you want to check.</li>
-            </ul>
+        <h3>Warnings:</h3>
+        <ul>
+            <li>Handle passwords securely and avoid reusing them across multiple sites.</li>
+            <li>Use a password manager to create strong, unique passwords.</li>
+        </ul>
 
-            <p>Steps to use the tool:</p>
-            <ol>
-                <li><strong>Install Python 3:</strong> Ensure you have Python 3 installed and install the <code>requests</code> library:</li>
-                <pre><code>pip install requests</code></pre>
-                <li><strong>Create a List of Passwords:</strong> Prepare the passwords you want to check.</li>
-                <li><strong>Run the Script:</strong> Copy the script, replace the placeholder passwords, and run the code.</li>
-                <li><strong>View Results:</strong> The script tells you if a password has been found in breaches, and how many times.</li>
-            </ol>
-
-            <h3>Warnings:</h3>
-            <ul>
-                <li>Handle passwords securely and avoid reusing them across multiple sites.</li>
-                <li>Use a password manager to create strong, unique passwords.</li>
-            </ul>
-
-            <p>Regularly check your passwords with PassGuard to stay ahead of breaches and protect your accounts.</p>
-        </div>
+        <p>Regularly check your passwords with PassGuard to stay ahead of breaches and protect your accounts.</p>
     </div>
 
     <footer>
         <p>&copy; 2024 Hacker OS System Emrald Co. Unauthorized use prohibited.</p>
-        <p>Disclaimer: The Hacker OS System is intended for use only in extreme circumstances where traditional methods fail against ruthless adversaries. Its use should be a measure of last resort, and legal implications may apply.</p>
+        <p>Disclaimer: The Hacker OS System is intended for use only in extreme circumstances where traditional methods fail against ruthless adversaries.</p>
     </footer>
 
     <script>
+        function toggleCode(id) {
+            const codeContainer = document.getElementById(id);
+            codeContainer.classList.toggle('active');
+        }
+
         function copyCode(id) {
             var codeElement = document.getElementById(id);
             var range = document.createRange();
