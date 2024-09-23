@@ -5,76 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emrald's License</title>
     <style>
-        /* New Hacker OS Theme */
+        /* General Styling */
         body {
-            background-color: #0f1014; /* Kali terminal-style dark background */
+            background-color: #0f1014; /* Dark background */
             color: #39ff14; /* Neon green text */
             font-family: 'Courier New', monospace;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth; /* Smooth scrolling for navigation */
+            scroll-behavior: smooth;
         }
 
         header {
-            background-color: #1e1e1e; /* Slightly lighter black for header */
-            color: #39ff14; /* Neon green */
+            background-color: #1e1e1e;
+            color: #39ff14;
             padding: 20px 0;
             text-align: center;
-            border-bottom: 3px solid #39ff14; /* Green underline to match theme */
+            border-bottom: 3px solid #39ff14;
         }
 
         h1 {
-            font-size: 2.8rem; /* Adjusted for better readability */
+            font-size: 2.8rem;
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #39ff14;
         }
 
         .license-container {
+            max-width: 1200px;
+            margin: 40px auto;
             padding: 30px;
-            margin: 20px;
-            border: 2px solid #39ff14; /* Neon green border */
-            border-radius: 8px;
-            overflow-x: auto;
-            background-color: #1a1a1a; /* Slight contrast for better readability */
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); /* Subtle neon glow */
+            background-color: #1a1a1a;
+            border: 2px solid #39ff14;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+        }
+
+        .license-container h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #39ff14;
+            text-transform: uppercase;
         }
 
         .license-container pre {
-            white-space: pre-wrap; /* Ensure text wraps */
+            white-space: pre-wrap;
             word-wrap: break-word;
-            color: #00ffff; /* Cyan for better text distinction */
+            color: #00ffff;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
+        /* Enhanced Home Button */
         .home-button {
-            background-color: #39ff14; /* Neon green button */
-            color: #000000; /* Black text */
+            background-color: #39ff14;
+            color: #000;
             border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 15px;
+            padding: 16px 32px; /* Larger button */
+            border-radius: 8px;
+            margin-top: 20px;
             display: inline-block;
+            text-decoration: none;
+            font-size: 18px; /* Larger text */
+            font-weight: bold;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .home-button:hover {
-            background-color: #00ffff; /* Cyan background on hover */
-            color: #000000; /* Black text on hover */
+            background-color: #00ffff;
+            color: #000;
         }
 
         footer {
-            background-color: #1e1e1e; /* Black footer with slight contrast */
+            background-color: #1e1e1e;
             color: #39ff14;
             text-align: center;
             padding: 20px;
             border-top: 2px solid #39ff14;
             font-size: 0.9rem;
-        }
-
-        footer p {
-            margin: 5px 0;
         }
 
         footer a {
@@ -83,7 +90,7 @@
         }
 
         footer a:hover {
-            color: #ff0000; /* Red hover for links */
+            color: #ff0000;
         }
 
         /* Scroll to Top Button */
@@ -93,11 +100,11 @@
             right: 20px;
             background-color: #39ff14;
             color: #000;
-            padding: 10px 15px;
+            padding: 14px 20px;
             border-radius: 50%;
             text-decoration: none;
             display: none;
-            font-size: 18px;
+            font-size: 20px; /* Larger size for better visibility */
             z-index: 1000;
             transition: background-color 0.3s ease;
         }
@@ -107,7 +114,7 @@
             color: #ffffff;
         }
 
-        /* Media Queries for Responsiveness */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.3rem;
@@ -119,7 +126,8 @@
             }
 
             .home-button {
-                padding: 10px 20px;
+                padding: 12px 24px;
+                font-size: 16px;
             }
         }
 
@@ -134,7 +142,8 @@
             }
 
             .home-button {
-                padding: 8px 16px;
+                padding: 10px 20px;
+                font-size: 14px;
             }
         }
     </style>
@@ -146,6 +155,7 @@
     </header>
 
     <div class="license-container">
+        <h2>License Overview</h2>
         <pre>
             Skyla J. Miranda Reyes Emrald Co. Version 1.0, March 2024
 
