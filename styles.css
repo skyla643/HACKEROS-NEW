@@ -12,6 +12,7 @@ header {
     padding: 20px;
     text-align: center;
     border-bottom: 3px solid #39ff14;
+    position: relative; /* Ensure it's not fixed */
 }
 
 header h1 {
@@ -171,6 +172,10 @@ main {
 }
 
 @media screen and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
     header h1 {
         font-size: 20px;
     }
@@ -198,6 +203,10 @@ main {
 }
 
 @media screen and (max-width: 320px) {
+    body {
+        font-size: 10px;
+    }
+
     header h1 {
         font-size: 18px;
     }
