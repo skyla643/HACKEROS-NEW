@@ -13,6 +13,7 @@
             font-family: 'Courier New', monospace;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
 
         header {
@@ -20,11 +21,14 @@
             padding: 20px;
             text-align: center;
             border-bottom: 3px solid #39ff14;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         header h1 {
             color: #39ff14;
-            font-size: 32px;
+            font-size: 36px;
             text-transform: uppercase;
         }
 
@@ -46,43 +50,53 @@
         }
 
         .intro {
-            font-size: 18px;
+            font-size: 20px;
             color: #00ffff;
             margin-bottom: 30px;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
         }
 
-        .section-title {
-            color: #39ff14;
-            font-size: 24px;
-            margin: 30px 0 10px 0;
-            border-bottom: 2px solid #39ff14;
-            padding-bottom: 5px;
+        /* Flexbox layout for tool cards */
+        .tool-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
         .tool {
-            margin: 20px 0;
             background-color: #151515;
-            padding: 20px;
-            border-left: 4px solid #39ff14;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: left;
+            width: 300px;
+            flex: 1 1 calc(33.33% - 40px); /* Three cards per row with margin */
+            margin: 20px;
+            box-sizing: border-box;
         }
 
         .tool h3 {
             color: #39ff14;
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
-        .tool p {
-            margin: 10px 0;
-            font-size: 16px;
+        .tool p, .tool ul {
+            margin: 15px 0;
+            font-size: 18px;
             color: #00ffff;
         }
 
         .tool ul {
             list-style-type: square;
             color: #39ff14;
-            margin-left: 20px;
+            padding-left: 20px;
+        }
+
+        .tool ul li {
+            margin-bottom: 10px;
         }
 
         .footer {
@@ -94,6 +108,7 @@
 
         .footer p {
             color: #39ff14;
+            font-size: 16px;
         }
 
         .footer a {
@@ -108,18 +123,38 @@
         }
 
         .coming-soon {
-            font-size: 18px;
+            font-size: 20px;
             color: #39ff14;
             margin-top: 40px;
+            font-weight: bold;
         }
 
         .disclaimer {
-            font-size: 14px;
+            font-size: 16px;
             color: #ff3333;
             margin-top: 20px;
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 1000px) {
+            .tool {
+                flex: 1 1 calc(50% - 40px); /* Two cards per row */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tool {
+                flex: 1 1 100%; /* One card per row */
+            }
+        }
+
+        /* Hover Effects */
+        .tool:hover {
+            background-color: #1c1c1c;
+            transition: 0.3s;
+            transform: scale(1.02);
+        }
     </style>
-    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
     <header>
@@ -143,56 +178,51 @@
             relentless commitment to security.
         </p>
 
-        <section id="securecrypt" class="tool">
-            <h3 class="section-title">CipherSafe</h3>
-            <p>Our updated CipherSafe tool provides a robust solution for secure communication by encrypting messages and transmitting them safely via email. Here's what it offers:</p>
-            <ul>
-                <li>Automatic Key Handling: Creates a new encryption key for each message and seamlessly loads existing keys.</li>
-                <li>Bulletproof Email Encryption: Encodes messages and sends them as secure email attachments.</li>
-                <li>Quick Troubleshooting: Advanced features provide detailed error messages for easy debugging.</li>
-            </ul>
-            <p><strong>What's New:</strong> Improved UI, revamped key management, and streamlined small file encryption.</p>
-        </section>
+        <div class="tool-container">
+            <section id="securecrypt" class="tool">
+                <h3 class="section-title">CipherSafe</h3>
+                <p>Our updated CipherSafe tool provides a robust solution for secure communication by encrypting messages and transmitting them safely via email. Here's what it offers:</p>
+                <ul>
+                    <li>Automatic Key Handling: Creates a new encryption key for each message and seamlessly loads existing keys.</li>
+                    <li>Bulletproof Email Encryption: Encodes messages and sends them as secure email attachments.</li>
+                    <li>Quick Troubleshooting: Advanced features provide detailed error messages for easy debugging.</li>
+                </ul>
+            </section>
 
-        <section id="passguard" class="tool">
-            <h3 class="section-title">PassGuard: Password Security Assessment Tool</h3>
-            <p>PassGuard is a comprehensive utility engineered to fortify your password security effortlessly. Here's how it empowers you:</p>
-            <ul>
-                <li>Efficient password evaluation through hash-cracking techniques, including dictionary and brute-force attacks.</li>
-                <li>Simple and intuitive interface for inputting essential parameters.</li>
-                <li>Real-time feedback on password strength assessment, enabling prompt action to enhance security measures.</li>
-            </ul>
-            <p><strong>What's New:</strong> Enhanced brute-force attack capabilities, adjustable hash algorithms, and improved UI for better navigation.</p>
-        </section>
+            <section id="passguard" class="tool">
+                <h3 class="section-title">PassGuard: Password Security Assessment Tool</h3>
+                <p>PassGuard is a comprehensive utility engineered to fortify your password security effortlessly. Here's how it empowers you:</p>
+                <ul>
+                    <li>Efficient password evaluation through hash-cracking techniques, including dictionary and brute-force attacks.</li>
+                    <li>Simple and intuitive interface for inputting essential parameters.</li>
+                    <li>Real-time feedback on password strength assessment, enabling prompt action to enhance security measures.</li>
+                </ul>
+            </section>
 
-        <!-- New IntruderWatch section -->
-        <section id="intruderwatch" class="tool">
-            <h3 class="section-title">IntruderWatch (Coming Soon)</h3>
-            <p>IntruderWatch is a sophisticated keylogger and monitoring tool designed for legal and ethical use. Here's what it offers:</p>
-            <ul>
-                <li>Captures keystrokes, mouse movements, and system processes for analysis.</li>
-                <li>Sends captured data to a remote server for authorized monitoring.</li>
-                <li>Completely customizable to client requirements.</li>
-            </ul>
-            <p><strong>Important:</strong> IntruderWatch is a paid tool. All payments must be made via Bitcoin, and I will not provide any technical support for setting up or using this script. This platform is built by a hacker for hackers. If you're not one, don't bother contacting me.</p>
-        </section>
+            <section id="intruderwatch" class="tool">
+                <h3 class="section-title">IntruderWatch (Coming Soon)</h3>
+                <p>IntruderWatch is a sophisticated keylogger and monitoring tool designed for legal and ethical use. Here's what it offers:</p>
+                <ul>
+                    <li>Captures keystrokes, mouse movements, and system processes for analysis.</li>
+                    <li>Sends captured data to a remote server for authorized monitoring.</li>
+                    <li>Completely customizable to client requirements.</li>
+                </ul>
+            </section>
 
-        <section id="vulnscan" class="tool">
-            <h3 class="section-title">VulnScan Pro: Penetration Testing Tool</h3>
-            <p>Our updated VulnScan Pro is a powerful utility designed to bolster your system's security. Here's what it offers:</p>
-            <ul>
-                <li>Basic vulnerability scanning by checking for open ports on specified IP addresses.</li>
-                <li>User-friendly interface with simple prompts for IP input.</li>
-                <li>Immediate feedback on discovered open ports, aiding in identifying potential vulnerabilities.</li>
-            </ul>
-            <p><strong>What's New:</strong> Improved scanning processes, integration of external libraries for more detailed scans.</p>
-        </section>
+            <section id="vulnscan" class="tool">
+                <h3 class="section-title">VulnScan Pro: Penetration Testing Tool</h3>
+                <p>Our updated VulnScan Pro is a powerful utility designed to bolster your system's security. Here's what it offers:</p>
+                <ul>
+                    <li>Basic vulnerability scanning by checking for open ports on specified IP addresses.</li>
+                    <li>User-friendly interface with simple prompts for IP input.</li>
+                    <li>Immediate feedback on discovered open ports, aiding in identifying potential vulnerabilities.</li>
+                </ul>
+            </section>
+        </div>
 
-        <!-- Coming Soon Message -->
         <p class="coming-soon">More tools coming soon. Stay tuned!</p>
 
-        <!-- Warning Disclaimer -->
-        <p class="disclaimer">⚠️ This platform is created for hackers by a hacker. I will not be helping the petty common man. No support or tutorials will be provided. Proceed with caution.</p>
+        <p class="disclaimer">⚠️ This platform is created for hackers by a hacker. No support or tutorials will be provided. Proceed with caution.</p>
 
     </main>
 
