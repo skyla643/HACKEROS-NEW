@@ -12,7 +12,10 @@ header {
     padding: 20px;
     text-align: center;
     border-bottom: 3px solid #39ff14;
-    position: relative; /* Ensure it's not fixed */
+    position: fixed; /* Fix the header to the top */
+    width: 100%; /* Make sure the header spans the full width */
+    top: 0; /* Stick to the top of the page */
+    z-index: 1000; /* Ensure the header is above other content */
 }
 
 header h1 {
@@ -34,7 +37,7 @@ nav a:hover {
 }
 
 main {
-    padding: 40px;
+    padding: 100px 40px; /* Add padding at the top to compensate for the fixed header */
     text-align: center;
 }
 
@@ -127,7 +130,7 @@ main {
     }
 
     main {
-        padding: 30px;
+        padding: 100px 30px; /* Adjusted padding for responsive */
     }
 
     .section-title {
@@ -155,7 +158,7 @@ main {
     }
 
     main {
-        padding: 20px;
+        padding: 100px 20px; /* Adjusted padding for responsive */
     }
 
     .section-title {
@@ -181,7 +184,7 @@ main {
     }
 
     main {
-        padding: 15px;
+        padding: 100px 15px; /* Adjusted padding for responsive */
     }
 
     nav a {
@@ -212,7 +215,7 @@ main {
     }
 
     main {
-        padding: 10px;
+        padding: 100px 10px; /* Adjusted padding for responsive */
     }
 
     nav a {
