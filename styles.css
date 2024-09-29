@@ -9,7 +9,7 @@ body {
 
 header {
     background-color: #1e1e1e;
-    padding: 20px;
+    padding: 10px 20px; /* Reduced padding to make the header smaller */
     text-align: center;
     border-bottom: 3px solid #39ff14;
     position: fixed; /* Fix the header to the top */
@@ -20,13 +20,18 @@ header {
 
 header h1 {
     color: #39ff14;
-    font-size: 32px;
+    font-size: 28px; /* Reduced font size slightly to fit better */
     text-transform: uppercase;
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px; /* Add a little space between the title and the nav links */
 }
 
 nav a {
     color: #39ff14;
-    margin: 0 15px;
+    margin: 0 10px; /* Reduced margin to keep links tighter */
     text-decoration: none;
     font-size: 18px;
 }
@@ -37,7 +42,7 @@ nav a:hover {
 }
 
 main {
-    padding-top: 160px; /* Increased padding to ensure content is not hidden behind the fixed header */
+    padding-top: 130px; /* Adjusted padding to ensure content stays below the header */
     padding-left: 40px;
     padding-right: 40px;
     text-align: center;
@@ -124,7 +129,7 @@ main {
     }
 
     header h1 {
-        font-size: 28px;
+        font-size: 24px; /* Adjusted font size for responsiveness */
     }
 
     nav a {
@@ -132,7 +137,7 @@ main {
     }
 
     main {
-        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-top: 130px; /* Adjusted padding to accommodate header */
         padding-left: 30px;
         padding-right: 30px;
     }
@@ -152,17 +157,17 @@ main {
     }
 
     header h1 {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     nav a {
         display: block;
-        margin: 10px 0;
+        margin: 5px 0;
         font-size: 16px;
     }
 
     main {
-        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-top: 130px; /* Adjusted padding for small screens */
         padding-left: 20px;
         padding-right: 20px;
     }
@@ -186,11 +191,11 @@ main {
     }
 
     header h1 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     main {
-        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-top: 130px; /* Adjusted padding for very small screens */
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -219,11 +224,11 @@ main {
     }
 
     header h1 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     main {
-        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-top: 130px; /* Adjusted padding for very small screens */
         padding-left: 10px;
         padding-right: 10px;
     }
