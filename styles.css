@@ -37,7 +37,9 @@ nav a:hover {
 }
 
 main {
-    padding: 100px 40px; /* Add padding at the top to compensate for the fixed header */
+    padding-top: 160px; /* Increased padding to ensure content is not hidden behind the fixed header */
+    padding-left: 40px;
+    padding-right: 40px;
     text-align: center;
 }
 
@@ -130,7 +132,9 @@ main {
     }
 
     main {
-        padding: 100px 30px; /* Adjusted padding for responsive */
+        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     .section-title {
@@ -158,7 +162,9 @@ main {
     }
 
     main {
-        padding: 100px 20px; /* Adjusted padding for responsive */
+        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .section-title {
@@ -184,7 +190,9 @@ main {
     }
 
     main {
-        padding: 100px 15px; /* Adjusted padding for responsive */
+        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     nav a {
@@ -215,7 +223,9 @@ main {
     }
 
     main {
-        padding: 100px 10px; /* Adjusted padding for responsive */
+        padding-top: 160px; /* Ensure enough top padding for all viewports */
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     nav a {
